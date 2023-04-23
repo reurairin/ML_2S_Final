@@ -12,8 +12,8 @@ _service = GenerateSpeechService()
 app = FastAPI()
 
 
-@app.post("/api/generate", response_class=Response)
-async def generate_speech(request_model: GenerateSpeechRequest):
-    buffer = _service.generate_speech(request_model.utterance)
+@app.get("/api/generate", response_class=Response)
+async def generate_speech(utterance: str):
+    buffer = _service.generate_speech(utterance)
     with buffer as b:
         return Response(b.getvalue(), media_type="audio/wav")
