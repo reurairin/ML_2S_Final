@@ -2,13 +2,49 @@ import { Howl, Howler } from 'howler';
 import { useEffect, useState } from 'react';
 import styles from './AudioPlayer.module.css';
 
-const sound = new Howl({
-    src: ['http://mediaserv30.live-streams.nl:8086/live'],
+let sound = new Howl({
+    src: [
+        'http://127.0.0.1:8000/api/generate?utterance=Please write something'
+    ],
     html5: true
 });
 
-export function AudioPlayer() {
+export function AudioPlayer(props: { utterance: string }) {
     const [isDataLoaded, setIsDataLoaded] = useState(false);
+    const [hasBackendError, setHasBackendError] = useState(false);
+
+    useEffect(() => {
+        if (!!props.utterance) {
+            setIsDataLoaded(false);
+            setHasBackendError(false);
+            sound = new Howl({
+                src: [
+                    `http://127.0.0.1:8000/api/generate?utterance=${props.utterance}`
+                ],
+                html5: true
+            });
+            sound.on('load', () => {
+                setIsDataLoaded(true);
+            });
+            sound.on('loaderror', () => {
+                console.log('fail');
+                setHasBackendError(true);
+            });
+            sound.on('end', () => {
+                setPlayIcon('play-solid.svg');
+            });
+            sound.on('stop', () => {
+                setPlayIcon('play-solid.svg');
+            });
+            sound.on('play', () => {
+                setPlayIcon('pause-solid.svg');
+            });
+            sound.on('pause', () => {
+                setPlayIcon('play-solid.svg');
+            });
+            sound.play();
+        }
+    }, [props.utterance]);
 
     const [playIcon, setPlayIcon] = useState('play-solid.svg');
     const [muteIcon, setMuteIcon] = useState('volume-high-solid.svg');
@@ -23,10 +59,8 @@ export function AudioPlayer() {
     const handlePlayPause = () => {
         if (sound.playing()) {
             sound.pause();
-            setPlayIcon('play-solid.svg');
         } else {
             sound.play();
-            setPlayIcon('pause-solid.svg');
         }
     };
 
@@ -45,11 +79,32 @@ export function AudioPlayer() {
         sound.stop();
     };
 
+    if (hasBackendError) {
+        return (
+            <section className={styles['player-container']}>
+                <p className="--primary-text">Failed to load data.</p>
+            </section>
+        );
+    }
+
+    if (!props.utterance) {
+        return (
+            <section className={styles['player-container']}>
+                <p className="--primary-text">Please write something.</p>
+            </section>
+        );
+    }
+
+    if (!isDataLoaded) {
+        return (
+            <section className={styles['player-container']}>
+                <p className="--primary-text">Loading...</p>
+            </section>
+        );
+    }
+
     return (
         <section className={styles['player-container']}>
-            <p className="--primary-text">
-                {isDataLoaded ? 'Ready for playback.' : 'No data loaded.'}
-            </p>
             <span className={styles['button-container']}>
                 <button
                     onClick={handlePlayPause}
