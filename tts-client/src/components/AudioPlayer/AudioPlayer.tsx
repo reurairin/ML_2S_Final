@@ -42,7 +42,7 @@ export function AudioPlayer() {
     };
 
     const handleStop = () => {
-        () => sound.stop();
+        sound.stop();
     };
 
     return (
