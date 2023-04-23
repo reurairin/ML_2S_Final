@@ -29,6 +29,9 @@
 .input-field {
     background-color: var(--darker);
     color: var(--primary);
+
+    resize: none;
+
     border: 0px;
     padding: 0.5rem;
 
