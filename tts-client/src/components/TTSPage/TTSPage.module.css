@@ -1,6 +1,54 @@
-.container {
+.page {
     height: calc(100% - var(--app-bar-height));
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-color: var(--dark);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    height: 100%;
+    width: 100%;
+}
+
+.gradient-wrapper {
+    height: 100%;
+    width: 100%;
+
+    margin: 0.1rem;
+}
+
+@media screen and (min-width: 700px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+
+        border-radius: 0.5rem;
+
+        background-color: var(--darker);
+    }
+
+    .gradient-wrapper {
+        width: 700px;
+        height: 400px;
+
+        padding: 0.1rem;
+
+        border-radius: 0.5rem;
+
+        background-image: var(--primary);
+        background-image: var(--primary-webkit);
+        background-image: var(--primary-gradient);
+    }
+}
+
+@media screen and (max-height: 450px) {
+    .gradient-wrapper {
+        height: 300px;
+    }
 }

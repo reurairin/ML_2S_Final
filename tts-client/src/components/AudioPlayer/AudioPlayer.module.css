@@ -1,3 +1,28 @@
-.control-icon{
-    height: 1rem;
+.control-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.icon-button {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+
+    border-radius: 50%;
+    border: solid 0.1rem var(--secondary);
+
+    background-color: transparent;
+
+    display: grid;
+    place-content: center;
+}
+
+.button-container {
+    display: flex;
+}
+
+.player-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

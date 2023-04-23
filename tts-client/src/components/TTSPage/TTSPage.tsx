@@ -4,10 +4,12 @@ import styles from './TTSPage.module.css';
 
 export function TTSPage() {
     return (
-        <main className={styles.container}>
-            <div>
-                <InputForm />
-                <AudioPlayer />
+        <main className={styles.page}>
+            <div className={styles['gradient-wrapper']}>
+                <div className={styles.container}>
+                    <InputForm />
+                    <AudioPlayer />
+                </div>
             </div>
         </main>
     );

@@ -8,8 +8,10 @@ const sound = new Howl({
 });
 
 export function AudioPlayer() {
+    const [isDataLoaded, setIsDataLoaded] = useState(false);
+
     const [playIcon, setPlayIcon] = useState('play-solid.svg');
-    const [muteIcon, setMuteIcon] = useState('volume-xmark-solid.svg');
+    const [muteIcon, setMuteIcon] = useState('volume-high-solid.svg');
 
     const [volume, setVolume] = useState(1.0);
     const [savedVolume, setSavedVolume] = useState(1.0);
@@ -31,47 +33,59 @@ export function AudioPlayer() {
     const handleMute = () => {
         if (volume === 0.0) {
             setVolume(savedVolume);
-            setMuteIcon('volume-xmark-solid.svg');
+            setMuteIcon('volume-high-solid.svg');
         } else {
             setSavedVolume(volume);
             setVolume(0.0);
-            setMuteIcon('volume-high-solid.svg');
+            setMuteIcon('volume-xmark-solid.svg');
         }
     };
 
+    const handleStop = () => {
+        () => sound.stop();
+    };
+
     return (
-        <section>
-            <button onClick={handlePlayPause}>
-                <img
-                    className={styles['control-icon']}
-                    src={`/icons/${playIcon}`}
-                    alt="play"
+        <section className={styles['player-container']}>
+            <p className="--primary-text">
+                {isDataLoaded ? 'Ready for playback.' : 'No data loaded.'}
+            </p>
+            <span className={styles['button-container']}>
+                <button
+                    onClick={handlePlayPause}
+                    className={styles['icon-button']}
+                >
+                    <img
+                        className={styles['control-icon']}
+                        src={`/icons/${playIcon}`}
+                        alt="play"
+                    />
+                </button>
+                <button onClick={handleStop} className={styles['icon-button']}>
+                    <img
+                        className={styles['control-icon']}
+                        src={`/icons/stop-solid.svg`}
+                        alt="play"
+                    />
+                </button>
+                <button onClick={handleMute} className={styles['icon-button']}>
+                    <img
+                        className={styles['control-icon']}
+                        src={`/icons/${muteIcon}`}
+                        alt="mute"
+                    />
+                </button>
+                <input
+                    type="range"
+                    min="0.0"
+                    max="1.0"
+                    step="0.1"
+                    value={volume}
+                    onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
+                        setVolume(event?.target?.valueAsNumber);
+                    }}
                 />
-            </button>
-            <button onClick={() => sound.stop()}>
-                <img
-                    className={styles['control-icon']}
-                    src="/icons/stop-solid.svg"
-                    alt="stop"
-                />
-            </button>
-            <button onClick={handleMute}>
-                <img
-                    className={styles['control-icon']}
-                    src={`/icons/${muteIcon}`}
-                    alt="mute"
-                />
-            </button>
-            <input
-                type="range"
-                min="0.0"
-                max="1.0"
-                step="0.1"
-                value={volume}
-                onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    setVolume(event?.target?.valueAsNumber);
-                }}
-            />
+            </span>
         </section>
     );
 }
