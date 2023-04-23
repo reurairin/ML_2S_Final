@@ -4,7 +4,9 @@ import styles from './AudioPlayer.module.css';
 
 let sound = new Howl({
     src: [
-        'http://127.0.0.1:8000/api/generate?utterance=Please write something'
+        `${
+            import.meta.env.VITE_BASE_URL
+        }/api/generate?utterance=Please write something`
     ],
     html5: true
 });
@@ -19,7 +21,9 @@ export function AudioPlayer(props: { utterance: string }) {
             setHasBackendError(false);
             sound = new Howl({
                 src: [
-                    `http://127.0.0.1:8000/api/generate?utterance=${props.utterance}`
+                    `${import.meta.env.VITE_BASE_URL}/api/generate?utterance=${
+                        props.utterance
+                    }`
                 ],
                 html5: true
             });
@@ -112,21 +116,21 @@ export function AudioPlayer(props: { utterance: string }) {
                 >
                     <img
                         className={styles['control-icon']}
-                        src={`/icons/${playIcon}`}
+                        src={`/client/icons/${playIcon}`}
                         alt="play"
                     />
                 </button>
                 <button onClick={handleStop} className={styles['icon-button']}>
                     <img
                         className={styles['control-icon']}
-                        src={`/icons/stop-solid.svg`}
+                        src={`/client/icons/stop-solid.svg`}
                         alt="play"
                     />
                 </button>
                 <button onClick={handleMute} className={styles['icon-button']}>
                     <img
                         className={styles['control-icon']}
-                        src={`/icons/${muteIcon}`}
+                        src={`/client/icons/${muteIcon}`}
                         alt="mute"
                     />
                 </button>
