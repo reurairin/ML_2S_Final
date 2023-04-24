@@ -2,21 +2,22 @@ import { useForm } from 'react-hook-form';
 import styles from './InputForm.module.css';
 
 const defaultFormState = {
-    userInput: ''
+    utterance: ''
 };
 
-export function InputForm() {
+export function InputForm(props: {setUtterance: any}) {
     const { formState, register, handleSubmit, reset } = useForm<{
-        userInput: string;
+        utterance: string;
     }>({
         defaultValues: defaultFormState
     });
 
     const { errors } = formState;
 
-    const submitTTS = (data: { userInput: string }) => {
-        console.log(data);
+    const submitTTS = (data: { utterance: string }) => {
+        console.log('User typed: ', data.utterance);
         reset(defaultFormState);
+        props.setUtterance(data.utterance)
     };
 
     return (
@@ -27,12 +28,12 @@ export function InputForm() {
             >
                 <textarea
                     className={styles['input-field']}
-                    {...register('userInput', {
+                    {...register('utterance', {
                         required: 'Please write something.'
                     })}
                 ></textarea>
 
-                <p className="--primary-text">{errors?.userInput?.message}</p>
+                <p className="--primary-text">{errors?.utterance?.message}</p>
 
                 <button
                     type="submit"
