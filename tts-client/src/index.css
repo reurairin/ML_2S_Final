@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --app-bar-height: 3rem;
+    --width-breakpoint: 500px;
+
+    --dark: #232526;
+    --darker: #141616;
+
+    --border-thickness: 0.1rem;
+
+    --secondary: #f2709c; /* fallback for old browsers */
+    --primary: #ff9472;
+    --primary-webkit: -webkit-linear-gradient(
+        to right,
+        #ff9472,
+        #f2709c
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    --primary-gradient: linear-gradient(
+        to right,
+        #ff9472,
+        #f2709c
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+button {
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+}
+
+.--primary-text {
+    background-image: var(--primary);
+    background-image: var(--primary-webkit);
+    background-image: var(--primary-gradient);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}

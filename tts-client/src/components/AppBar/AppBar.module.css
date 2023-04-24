@@ -1,0 +1,20 @@
+.app-bar {
+    height: var(--app-bar-height);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--darker);
+}
+
+.app-title {
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.gradient-bar {
+    height: 0.1rem;
+    display: block;
+
+    background-image: var(--primary);
+    background-image: var(--primary-webkit);
+    background-image: var(--primary-gradient);
+}
