@@ -27,6 +27,7 @@ export function InputForm(props: {setUtterance: any}) {
                 className={styles['input-form']}
             >
                 <textarea
+                    data-testid='inputForm-textarea'
                     className={styles['input-field']}
                     {...register('utterance', {
                         required: 'Please write something.'
