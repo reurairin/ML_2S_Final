@@ -1,4 +1,4 @@
-import pytest
+from fastapi.testclient import TestClient
+from app import app
 
-def test():
-    assert True
+client = TestClient(app)
