@@ -30,3 +30,6 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+        cd tts-client
+        npm i
+        npm run test
