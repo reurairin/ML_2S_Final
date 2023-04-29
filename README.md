@@ -16,7 +16,7 @@
 Для приложения выбрана ранее обученная модель на платформе Hugging face `microsoft/speecht5_tts`. Ссылка на модель: [speecht5_tts](https://huggingface.co/microsoft/speecht5_tts). После предварительной обработки входного текста кодировщик-декодер моделирует преобразование в последовательность, а затем пост-сети генерируют выходные данные в аудио-речь на основе выходных данных декодера.
 
 Внешний вид
-![Иллюстрация к проекту](https://github.com/reurairin/ML_2S_Final/blob/main/application_images/Text-to-Speech.jpg)
+![Иллюстрация к проекту](https://github.com/reurairin/ML_2S_Final/blob/7d51f80e2e371e9b2ca8b230a0e0f769904b4267/application_images/Text-to-Speech.jpg)
 
 ### Ссылка на приложение
 
