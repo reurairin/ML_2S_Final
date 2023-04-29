@@ -9,7 +9,7 @@
 * [@Zhenya127](https://github.com/Zhenya127): Евгения Прасолова
 * [@pyretttt](https://github.com/pyretttt): Семен Бакулин
 * [@Den2909](https://github.com/Den2909): Денис Тряпицын
-* [@danil-makushev](https://github.com/danil-makushev): Данил Макушев
+* [@reurairin](https://github.com/reurairin): Данил Макушев
 
 ## Описание приложения
 
