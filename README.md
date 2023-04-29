@@ -1,12 +1,48 @@
+![new](https://github.com/reurairin/ML_2S_Final/actions/workflows/python-app.yml/badge.svg)
+
 # Group-11 Project 2nd Semester Text-to-speech
-Итоговый проект для дисциплины "Программная инженерия 2" УрФУ
 
-## Команда (group 11)
+Итоговый проект для дисциплины "Программная инженерия 2" УрФУ. Приложение для перевода текста на английском языке в аудио.
 
--   [@Zhenya127](https://github.com/Zhenya127): Евгения Прасолова
--   [@Den2909](https://github.com/Den2909): Денис Тряпицын
--   [@pyretttt](https://github.com/pyretttt): Семен Бакулин
--   [@reuraurin](https://github.com/reurairin): Данил Макушев
+## Авторы
+
+* [@Zhenya127](https://github.com/Zhenya127): Евгения Прасолова
+* [@pyretttt](https://github.com/pyretttt): Семен Бакулин
+* [@Den2909](https://github.com/Den2909): Денис Тряпицын
+* [@danil-makushev](https://github.com/danil-makushev): Данил Макушев
+
+## Описание приложения
+
+Для приложения выбрана ранее обученная модель на платформе Hugging face `microsoft/speecht5_tts`. Ссылка на модель: [speecht5_tts](https://huggingface.co/microsoft/speecht5_tts). После предварительной обработки входного текста кодировщик-декодер моделирует преобразование в последовательность, а затем пост-сети генерируют выходные данные в аудио-речь на основе выходных данных декодера.
+
+Внешний вид
+![Иллюстрация к проекту](https://github.com/reurairin/ML_2S_Final/blob/main/application_images/Text-to-Speech.jpg)
+
+### Ссылка на приложение
+
+http://84.201.140.47:8000
+
+## Бэкэнд
+
+Бэкэенд приложения реализован при помощи FastAPI.
+
+### Установка зависимостей
+
+```
+pip install -r requirements.txt
+```
+
+### Запуск приложения
+
+```
+uvicorn app:app --reload
+```
+
+### Запуск тестов
+
+```
+pytest
+```
 
 ## Клиентское приложение
 
